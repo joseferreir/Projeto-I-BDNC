@@ -13,7 +13,7 @@ diversos filtros para permitir uma analise melhor sobre o tema.
 Para executar o projeto é preciso ter o [postgresql com extensão postgis](http://postgis.net/install/) e o [Apache Maven](http://maven.apache.org/install.html)
 # Passos para executar
 ### Passo 1
- baixe ou clone o projeto no [bitbucket](https://bitbucket.org/Jose_Ferreira/bdnc1) 
+ baixe ou clone o projeto.
 
 ### Passo 2
 
