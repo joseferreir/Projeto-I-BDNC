@@ -1,0 +1,67 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="template/default_layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="content">
+
+        <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <link href="resources/css/style.css" rel="stylesheet"/>
+        
+        <p:messages showDetail="true" showIcon="false" closable="true" showSummary="false" autoUpdate="false" />
+        <br></br>
+        <div id="map" style="margin-top: 20px;" >
+            <a href="pageuser/PageAdmin.xhtml" >admin</a>
+
+         
+            
+            <a href="pageuser/VotoView.xhtml" >lacalização</a>
+        </div>
+        
+        
+        
+        
+        <div id="tb-voto">
+            <!--             tabela Equetes-->
+           
+
+            <h:form id="form">
+                <p:dataTable paginatorAlwaysVisible="true" paginator="true" paginatorPosition="bottom" rows="8" var="enq" value="#{enqueteControlador.listar()}">
+                    <p:column>
+                      
+
+                        <h:outputLink style="width: 2px; height: 2px;" styleClass="btn btn-default" value="pageuser/votoenquete.xhtml?id=#{enq.id}">
+                            <img title="Votar na enquete" class="editEnquete"  src="resources/imgs/voto.jpg"/>
+                            <span class="fa fa-edit"></span>
+                        </h:outputLink>
+                    </p:column>
+
+                    <p:column class="text-center">
+                        <f:facet name="header" class="alert-info  ">
+                            ID
+                        </f:facet>
+
+                        <h:outputText value="#{enq.id}" />
+                    </p:column>
+                    <p:column class="text-center">
+                        <f:facet name="header" class="alert-info ">
+                            ENQUETE
+                        </f:facet>
+
+                        <h:outputText value="#{enq.pergunta}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form> 
+
+            <!--               Fim tabela equetes-->
+
+        </div>
+
+
+    </ui:define>
+    <ui:define name="footer">
+        Rodapé - home.
+    </ui:define>
+</ui:composition>

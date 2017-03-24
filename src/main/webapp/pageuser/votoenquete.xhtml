@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>votar</title>
+         <link href="../resources/css/style.css" rel="stylesheet"/>
+         <link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        
+        <p:growl showDetail="true" showSummary="false" life="5000" />
+        <f:metadata>
+            <f:viewParam name="id" value="#{enqueteControlador.enquete.id}"/>
+
+            <f:viewAction action="#{enqueteControlador.buscaid()}" if="#{param.id ne null}" />
+        </f:metadata>
+        <div class="formUser">
+            <h:form class=""> 
+                <h:panelGrid columns="1" >
+                    
+                    <h:outputLabel id="pergunta" value="#{enqueteControlador.enquete.pergunta}"/>
+                    <div > 
+                   
+                    <h:selectOneMenu value="#{enqueteControlador.voto.resposta}"
+                                 id="sexo">
+                        <f:selectItem itemLabel="Sim" itemValue="#{1}"/>
+                        <f:selectItem itemLabel="Nao" itemValue="#{2}"/>
+                    <f:selectItem itemLabel="Não sei" itemValue="#{3}"/>
+                   
+                </h:selectOneMenu>
+                </div>
+                    <br/>
+                    
+                    <h:commandButton style="background-color: #43A047" class="btn-success btn-lg btn-group-justified" value="salvar" id="salva" action="#{enqueteControlador.votar()}"/>
+                  
+                    <a href="../home.xhtml" class=" bt-valta btn-danger btn-lg btn-group-justified">Volta</a>
+
+
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

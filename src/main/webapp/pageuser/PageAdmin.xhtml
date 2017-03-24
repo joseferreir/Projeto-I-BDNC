@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../template/default_layout.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+        <link href="../resources/css/bootstrap-theme.min.css" rel="stylesheet"/>
+        <link href="../resources/css/style.css" rel="stylesheet"/>
+
+
+        <div class="container" style="margin-top: 30px">
+            <div  class="alert-warning center-block col-lg-offset-1 alerta" style="width: 400px" >
+                <p:messages showDetail="true" showIcon="false" closable="true" showSummary="false" autoUpdate="false"/>
+            </div>
+            <!--  tabela usuario-->
+            <div class="panel-heading"><h3>Administração de <strong>usuario</strong></h3></div>
+
+            <h:form id="form-user">
+                <p:dataTable paginatorAlwaysVisible="true" paginator="true" paginatorPosition="bottom" rows="8" dataLocale="pt_BR" var="usuario" value="#{userCotroladorLogin.listar()}">
+                <p:column>
+
+
+                        <h:outputLink style="width: 2px; height: 2px;" styleClass="btn btn-default" value="#{userCotroladorLogin.atualizarIsAdm(usuario.id, usuario.eh_admin)}">
+                            <img title="Mudar o status do usuário" class="editEnquete"  src="../resources/icons/iconEdit.png"/>
+                            <span class="fa fa-edit"></span>
+                        </h:outputLink>
+                </p:column>	
+
+                <p:column class="text-center">
+                        <f:facet name="header" class="alert-info  text-center ">
+                            ID
+                        </f:facet>
+
+                        <h:outputText value="#{usuario.id}" />
+                </p:column>
+                <p:column class="text-center">
+                        <f:facet name="header" class="alert-info text-center">
+                            Nome
+                        </f:facet>
+
+                        <h:outputText value="#{usuario.nome}" />
+                </p:column>
+
+                <p:column class="text-center">
+                        <f:facet name="header" class="alert-info text-center">
+                            Email
+                        </f:facet>
+
+                        <h:outputText value="#{usuario.email}" />
+                </p:column>
+                <p:column class="text-center">
+                        <f:facet name="header" class="alert-info text-center">
+                            Status
+                        </f:facet>
+
+                        /N
+                </p:column>
+            </p:dataTable>
+            </h:form> 
+
+            <!--               Fim tabela usuario-->
+
+            <!--             tabela Equetes-->
+            <div class="panel-heading"><h3>Administração de <strong>Equetes</strong></h3></div>
+
+            <h:form id="form">
+                <p:dataTable paginatorAlwaysVisible="true" paginator="true" paginatorPosition="bottom" rows="8" var="enq" value="#{enqueteControlador.listar()}">
+                    <p:column>
+                        <f:facet name="header" class="alert-info ">
+                            <a href="../pageuser/UpdateEnquete.xhtml"><img title="Adicionar nova enquete" class="addEnquete" src="../resources/icons/add.png"/></a>
+                        </f:facet>
+
+                        <h:outputLink style="width: 2px; height: 2px;" styleClass="btn btn-default" value="UpdateEnquete.xhtml?id=#{enq.id}">
+                            <img title="Editar enquete" class="editEnquete"  src="../resources/icons/iconEdit.png"/>
+                            <span class="fa fa-edit"></span>
+                        </h:outputLink>
+                    </p:column>
+
+                    <p:column class="text-center">
+                        <f:facet name="header" class="alert-info  ">
+                            ID
+                        </f:facet>
+
+                        <h:outputText value="#{enq.id}" />
+                    </p:column>
+                    <p:column class="text-center">
+                        <f:facet name="header" class="alert-info ">
+                            ENQUETE
+                        </f:facet>
+
+                        <h:outputText value="#{enq.pergunta}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form> 
+
+            <!--               Fim tabela equetes-->
+
+
+        </div>
+        <script src="../resources/js/jquery-2.1.4.min.js"></script>
+        <script src="../resources/js/myscript.js"></script>
+        <script>
+           
+        </script>
+
+    </ui:define>
+    <ui:define name="footer">
+        Rodapé - home.
+    </ui:define>
+</ui:composition>

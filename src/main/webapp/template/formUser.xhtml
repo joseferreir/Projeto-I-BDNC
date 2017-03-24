@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>cadastro</title>
+        <link href="../resources/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="../resources/css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        
+        <div class="formUser">
+               
+        <h:form>
+            <h:panelGrid columns="1" >
+                <div class="input-group-lg sd">
+                    <h:outputLabel  for="nome" value="Nome:" />
+                    <h:inputText  id="nome"  value="#{usuarioControladorCadastro.usuario.nome}" />
+                                
+                </div>
+                <div > 
+                    <h:outputLabel  value="Sexo: " for="sexo" />
+                <h:selectOneMenu value="#{usuarioControladorCadastro.usuario.sexo}"
+                                 id="sexo">
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getgenero().get(0)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getgenero().get(1)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getgenero().get(2)}"/>
+                </h:selectOneMenu>
+                </div>
+                <div >
+                <h:outputLabel value="Idade: " for="idade" />
+                <h:selectOneMenu value="#{usuarioControladorCadastro.usuario.idade}"
+                                 id="idade">
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(0)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(1)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(2)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(3)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(4)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.fachaEtaria.get(5)}"/>             
+                </h:selectOneMenu>
+                </div>
+                <div class="custom-select">
+                <h:outputLabel value="Renda: " for="renda" />
+                <h:selectOneMenu value="#{usuarioControladorCadastro.usuario.renda}"
+                                 id="renda">
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.renda.get(0)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.renda.get(1)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.renda.get(2)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.renda.get(3)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.renda.get(4)}"/>
+                </h:selectOneMenu>
+
+                </div>
+                <div class="custom-select">
+                <h:outputLabel value="Esolaridade: " for="esolaridade" />
+                <h:selectOneMenu value="#{usuarioControladorCadastro.usuario.escolaridade}"
+                                 id="esolaridade" styleClass="center-block checkbox btn-group-justified text-center btn-block ">
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(0)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(1)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(2)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(3)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(4)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(5)}"/>
+                    <f:selectItem itemValue="#{usuarioControladorCadastro.enunfom.getnivelEscolar().get(6)}"/>
+                </h:selectOneMenu>
+                </div>
+                <div class="custom-select btn-group-justified">
+                    
+                    <h:outputLabel for="localizacao" value="Atualizar localização:" />
+                    <h:outputLink value="/falai/local.jsp"><img class="img-responsive imagmap" title="Ir para o map" src="resources/imgs/map2.jpg"></img></h:outputLink>
+                    
+                    
+                </div>
+                <div class="custom-select">
+                  <h:outputLabel value="E-mail: " for="email" />
+                <h:inputText  id="email" value="#{usuarioControladorCadastro.usuario.email}"/>
+                </div>
+                <div class="custom-select">
+                  <h:outputLabel value="senha: " for="senha" />
+                <h:inputSecret id="senha"  value="#{usuarioControladorCadastro.usuario.senha}"/>
+                </div>
+                <h:outputText />
+                <h:commandLink styleClass=" btn-save btn-success btn-lg btn-group-justified" action="#{usuarioControladorCadastro.cadastrar()}" value="salvar" />
+                <a href="../index.xhtml" class=" bt-valta btn-danger btn-lg btn-group-justified">Volta</a>
+            </h:panelGrid>
+        </h:form>
+        </div>
+         
+         
+       
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <h:outputScript library="../resources/js" name="script.js"
+                        target="head" />
+        <h:outputScript library="../resources/js" name="jquery-2.1.4.min.js"
+                        target="head" />
+        <h:outputStylesheet library="../resources/css" name="style.css" />
+        <script>
+            $(".alerta").click(function (){
+                $(".alerta").hide();
+            });
+        </script>
+
+    </h:body>
+</html>
+
